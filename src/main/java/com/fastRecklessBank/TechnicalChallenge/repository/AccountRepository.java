@@ -11,15 +11,21 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class AccountRepository {
     private Map<Object, Account> accounts = new HashMap<>();
+    private int nextId = 1;
 
+    public Account save(Account account) {
+        if (account.getId() == 0) {
+            account.setId(nextId++);
+        }
+        accounts.put(account.getId(), account);
+        return account;
+    }
     public Account findById(int id) {
         return accounts.get(id);
-    }
-    public Account save(Account account) {
-        return accounts.put(account.getId(), account);
     }
     public Collection<Account> findAll() {
         return accounts.values();
     }
+
 
 }

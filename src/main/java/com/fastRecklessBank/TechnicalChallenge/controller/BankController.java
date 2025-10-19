@@ -36,7 +36,7 @@ public class BankController {
     @PostMapping
     public Account createAccount(@RequestBody Account account) {
         
-        return bankService.createAccount(account.getId(), account.getKontostand());
+        return bankService.createAccount(account.getKontostand());
     }
     
     @PostMapping("/api/accounts/{id}/deposit")

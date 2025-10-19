@@ -19,8 +19,8 @@ public class BankService {
         this.accountRepository = accountRepository;
     }
 
-    public Account createAccount(int id, double initialBalance) {
-        Account newAccount = new Account(id, initialBalance);
+    public Account createAccount( double initialBalance) {
+        Account newAccount = new Account(0,initialBalance);
         return accountRepository.save(newAccount) ;
     }
 
