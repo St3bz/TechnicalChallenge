@@ -1,9 +1,11 @@
 package com.fastRecklessBank.TechnicalChallenge.repository;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import com.fastRecklessBank.TechnicalChallenge.model.Account;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Repository;
@@ -23,8 +25,8 @@ public class AccountRepository {
     public Account findById(int id) {
         return accounts.get(id);
     }
-    public Collection<Account> findAll() {
-        return accounts.values();
+    public List<Account> findAll() {
+        return new ArrayList<>(accounts.values());
     }
 
 

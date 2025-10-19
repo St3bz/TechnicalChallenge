@@ -7,6 +7,7 @@ import com.fastRecklessBank.TechnicalChallenge.repository.AccountRepository;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -98,8 +99,8 @@ public class BankService {
         return senderAccount;
     }
     
-    public Collection<Account> getAllAccounts() {
-        return accounts.values(); // Return all accounts stored in the map
+    public List<Account> getAllAccounts() {
+        return accountRepository.findAll(); // Return all accounts stored in the map
     }
 
     public Account save(Account account) {

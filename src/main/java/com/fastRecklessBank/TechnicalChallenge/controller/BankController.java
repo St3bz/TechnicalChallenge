@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 
@@ -29,8 +30,8 @@ public class BankController {
         this.bankService = bankService;
     }
     @GetMapping
-    public List<Account> getAllAccounts() {
-        return new ArrayList<>(bankService.getAllAccounts()); // Return all accounts as a list
+    public Collection<Account> getAllAccounts() {
+        return bankService.getAllAccounts(); // Return all accounts as a list
     }
 
     @PostMapping
@@ -39,16 +40,16 @@ public class BankController {
         return bankService.createAccount(account.getKontostand());
     }
     
-    @PostMapping("/api/accounts/{id}/deposit")
-    public Account deposit(@PathVariable int id, @RequestBody DepositRequest request) {
+    @PostMapping("/deposit")
+    public Account deposit(@RequestBody DepositRequest request) {
         
-        return bankService.deposit(id, request.getAmount());
+        return bankService.deposit(request.getAccountID(), request.getAmount());
     }
 
-    @PostMapping("/api/accounts/{id}/withdraw")
-    public Account withdraw(@PathVariable int id, @RequestBody WithdrawRequest request) {
+    @PostMapping("withdraw")
+    public Account withdraw(@RequestBody WithdrawRequest request) {
         
-        return bankService.withdraw(id, request.getAmount());
+        return bankService.withdraw(request.getAccountID(), request.getAmount());
     }
 
     @PostMapping("/api/accounts/{id}/transfer")
