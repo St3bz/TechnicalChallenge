@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
+//Erster Entwurf des Frontends zur Interaktion mit dem Backend
+
 function App() {
   const [accounts, setAccounts] = useState([]);
   const [accountId, setAccountId] = useState('');
@@ -36,7 +38,7 @@ function App() {
 
   const deposit = async () => {
     try {
-      await fetch(`http://localhost:8080/api/accounts/${accountId}/deposit`, {
+      await fetch(`http://localhost:8080/api/accounts/deposit`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ amount: parseFloat(amount) }),
@@ -49,7 +51,7 @@ function App() {
 
   const withdraw = async () => {
     try {
-      await fetch(`http://localhost:8080/api/accounts/${accountId}/withdraw`, {
+      await fetch(`http://localhost:8080/api/accounts/withdraw`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ amount: parseFloat(amount) }),
@@ -62,7 +64,7 @@ function App() {
 
   const transfer = async () => {
     try {
-      await fetch(`http://localhost:8080/api/accounts/${accountId}/transfer`, {
+      await fetch(`http://localhost:8080/api/accounts/transfer`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ receiverID: parseInt(receiverId), amount: parseFloat(amount) }),

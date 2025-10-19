@@ -22,6 +22,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/accounts")
 @CrossOrigin(origins = "http://localhost:3000")
+//Anbindung des Frontend noch ausstehend
 public class BankController {
 
     private final BankService bankService;
@@ -41,21 +42,21 @@ public class BankController {
     }
     
     @PostMapping("/deposit")
-    public Account deposit(@RequestBody DepositRequest request) {
+    public Account deposit(@RequestBody Account account) {
         
-        return bankService.deposit(request.getAccountID(), request.getAmount());
+        return bankService.deposit(account.getId(), account.getKontostand());
     }
 
     @PostMapping("withdraw")
-    public Account withdraw(@RequestBody WithdrawRequest request) {
+    public Account withdraw(@RequestBody Account account) {
         
-        return bankService.withdraw(request.getAccountID(), request.getAmount());
+        return bankService.withdraw(account.getId(), account.getKontostand());
     }
 
-    @PostMapping("/api/accounts/{id}/transfer")
-    public Account transfer(@PathVariable int id, @RequestBody Transfer request) {
+    @PostMapping("transfer")
+    public Account transfer( @RequestBody Transfer request) {
         
-        return bankService.transfer(id, request.getReceiverID(), request.getAmount());
+        return bankService.transfer(request.getSenderID(), request.getReceiverID(), request.getAmount());
     }
     
 

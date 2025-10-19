@@ -4,13 +4,13 @@ public class Transfer {
     int senderID;
     int receiverID;
     double amount;
-    int timestamp;
+    
 
-    public Transfer(int senderID, int receiverID, double amount, int timestamp) {
+    public Transfer(int senderID, int receiverID, double amount) {
         this.senderID = senderID;
         this.receiverID = receiverID;
         this.amount = amount;
-        this.timestamp = timestamp;
+        
     }
     
     public int getSenderID() {
@@ -31,7 +31,5 @@ public class Transfer {
     public void setAmount(double amount) {
         this.amount = amount;
     }
-    public int getTimestamp() {
-        return this.timestamp;
-    }
+    
 }

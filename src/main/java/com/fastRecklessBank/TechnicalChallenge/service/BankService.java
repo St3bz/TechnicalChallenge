@@ -97,6 +97,7 @@ public class BankService {
         accountRepository.save(senderAccount);
         accountRepository.save(receiverAccount);
         return senderAccount;
+        // Anpassung an die Historie von 50 Transaktionen 
     }
     
     public List<Account> getAllAccounts() {

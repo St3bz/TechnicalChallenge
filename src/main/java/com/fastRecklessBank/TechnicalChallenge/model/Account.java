@@ -30,4 +30,7 @@ public class Account {
     public void setKontostand(double kontostand) {
         this.kontostand = kontostand;
     }
+
+    // hinzufügen einer Liste zur Begrenzung von 50 Transaktionen
+    // Funktion zum ersetzen der ältesten Transaktion mit der neuen Transaktion bei überschreiten der 50 Transaktionen
 }
